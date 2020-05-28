@@ -1,0 +1,30 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+      <!-- This div is centered and takes 6 columns -->
+        <h1><%= @cocktail.name %></h1>
+        <table class="table">
+          <thead>
+            <th>Description</th>
+            <th>Ingredient</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <% @cocktail.doses.each do |dose| %>
+            <tr>
+                <td><%= dose.description %></td>
+                <td><%= dose.ingredient.name %></td>
+                <td><%= link_to "Remove", dose_path(dose), method: :delete %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-between">
+            <%= link_to "Create a dose",  new_cocktail_dose_path(@cocktail.id) %>
+            <%= link_to "Back to home", cocktails_path %>
+        </div>
+    </div>
+  </div>
+</div>
+
